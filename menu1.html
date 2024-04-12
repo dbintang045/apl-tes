@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Data</title>
+
+    <style>
+        body {
+            background-image: url('unnamed.jpg'); 
+            background-size: cover; 
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+        }
+        .input-form {
+            max-width: 300px;
+            padding: 30px 90px;
+            background-color: rgba(0, 0, 255, 0.096); /* Warna biru transparan */
+        }
+        .input-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: white; 
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #5416b9;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #5b8eee;
+        }
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #1641b9;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .btn:hover {
+            background-color: #5b8eee;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="input-form">
+        <h2>Input Data</h2>
+        <form id="inputForm">
+            <label for="name">Nama</label>
+            <input type="text" id="name" name="name" placeholder="Masukkan nama Anda" required>
+            <label for="birthdate">Tanggal Lahir</label>
+            <input type="date" id="birthdate" name="birthdate" required>
+            <input type="button" value="Submit" onclick="simpanData()">
+        </form>
+
+        <div class="btn-container">
+            <a href="lembardata1.html" class="btn">Lihat Data</a>
+            <a href="home.html" class="btn">Log Out</a>
+        </div>
+    </div>
+
+    <script>
+        function simpanData() {
+            var name = document.getElementById("name").value;
+            var birthdate = document.getElementById("birthdate").value;
+            var newData = {
+                name: name,
+                birthdate: birthdate
+            };
+            // Mengambil data yang sudah ada atau membuat array kosong jika belum ada
+            var existingData = JSON.parse(localStorage.getItem("allUserData")) || [];
+            // Menambahkan data baru ke dalam array
+            existingData.push(newData);
+            // Menyimpan kembali array ke localStorage
+            localStorage.setItem("allUserData", JSON.stringify(existingData));
+            // Redirect ke halaman lembardata1.html
+            window.location.href = "lembardata1.html";
+        }
+    </script>
+
+</body>
+</html>

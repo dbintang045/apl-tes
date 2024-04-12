@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Oke</title>
+    <style>
+        body {
+         background-image: url('unnamed.jpg'); /* Menyisipkan gambar sebagai latar belakang */
+         background-size: cover; /* Ukuran gambar menyesuaikan */
+         font-family: Arial, sans-serif;
+         margin: 0;
+         padding: 0;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 100vh; 
+            
+        }
+         .login-container {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         background-color: rgba(0, 0, 255, 0.2); /* Warna latar belakang transparan biru */
+         padding: 20px;
+         border-radius: 10px; /* Mengatur sudut bingkai */
+         box-shadow: 0 0 20px rgba(0,0,0,0.3); /* Efek bayangan bingkai */
+         max-width: 400px; /* Lebar maksimum kontainer */
+         width: 80%; /* Lebar kontainer  */
+         }
+         .login-heading {
+         margin-bottom: 20px;
+         text-align: center;
+         border: 2px solid #ccc; /* border bingkai */
+         padding: 10px 70px; 
+         border-radius: 10px; /* bingkai melengkung */
+         background-image: url('pngtree-cyan-background-images-stock-photos-vectors-wallpaper-free-download-picture-image_2385685.jpg'); /* Menyisipkan gambar sebagai latar belakang */
+         background-size: cover; 
+         color: white; 
+         font-family: 'Montserrat', sans-serif; /* Gaya tipografi Montserrat */
+         font-size: 18px; /* Ukuran teks */
+         text-transform: uppercase; /* Format teks */
+         letter-spacing: 2px; /* Jarak antar huruf */
+         text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Efek bayangan teks */
+         }
+        .login-message {
+            text-align: center;
+            margin-top: -20px; 
+        }
+        input[type="text"], input[type="password"] {
+            background-color: #f1f1f1;
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #d8d8d8;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            background-color: #1641b9;
+            color: white;
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #2169d4;
+        }
+        label {
+            color: #5b51ebf3;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .login-message h5 {
+         font-size: 18px; 
+         font-weight: bold; /* Tebal teks */
+         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+         color: #e6e9ee; 
+         text-align: center; /* Posisi teks di tengah */
+         text-transform: capitalize; /* Format teks */
+         letter-spacing: 1px; /* Jarak antar huruf */
+         margin-top: 10px; /* Jarak dari atas */
+         }
+     </style>
+
+</head>
+    <body>
+        <div class="login-container">
+            <div class="login-heading"> <!-- Menggunakan class login-heading untuk bingkai -->
+                <h2>Aplikasi Oke</h2>
+            </div>
+            <div class="login-message"> <!-- "Silahkan Login" tidak berada dalam bingkai -->
+                <h5>Silahkan Login</h5>
+            </div>
+            <form id="login-form" action="menu1.html" onsubmit="return validateForm()">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                <input type="submit" value="Login">
+            </form>
+        </div>  
+
+        <script>
+            function validateForm() {
+                var username = document.getElementById("username").value;
+                var password = document.getElementById("password").value;
+
+                if (username === "admin" && password === "123") {
+                    return true; // Mengizinkan form untuk disubmit
+                } else {
+                    alert("Username atau password salah!");
+                    return false; // Mencegah form dari disubmit
+                }
+            }
+        </script>   
+
+    </body>
+</html>

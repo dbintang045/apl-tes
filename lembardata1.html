@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasil Jawaban</title>
+    <style>
+        body {
+            background-image: url('unnamed.jpg'); 
+            background-size: cover; 
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+        }
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #1641b9;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .button:hover {
+            background-color: #5b8eee;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <h1>DATA INPUT</h1>
+        <div id="hasil"></div>
+        <div class="button-container">
+            <a href="menu1.html" class="button">Input Data</a>
+            <a href="home.html" class="button">Log Out</a>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            // Mengambil semua data dari localStorage
+            var allUserData = JSON.parse(localStorage.getItem("allUserData"));
+
+            // Menampilkan data dalam bentuk tabel
+            var tabel = "<table>";
+            tabel += "<tr><th>No.</th><th>Nama</th><th>Tanggal Lahir</th><th>Aksi</th></tr>";
+            
+            // Loop untuk setiap data dan menambahkannya ke tabel
+            allUserData.forEach(function(userData, index) {
+                var nomorUrut = index + 1;
+                tabel += "<tr><td>" + nomorUrut + "</td><td>" + userData.name + "</td><td>" + userData.birthdate + "</td><td><button onclick=\"hapusData(" + index + ")\">Hapus</button></td></tr>";
+            });
+            tabel += "</table>";
+
+            document.getElementById("hasil").innerHTML = tabel;
+        };
+
+        // Fungsi untuk menghapus data berdasarkan indeks
+        function hapusData(index) {
+            var allUserData = JSON.parse(localStorage.getItem("allUserData"));
+            allUserData.splice(index, 1); // Menghapus data dari array
+            localStorage.setItem("allUserData", JSON.stringify(allUserData)); // Menyimpan array yang sudah dihapus kembali ke localStorage
+            location.reload(); // Memuat ulang halaman untuk memperbarui tabel
+        }
+    </script>
+</body>
+</html>
